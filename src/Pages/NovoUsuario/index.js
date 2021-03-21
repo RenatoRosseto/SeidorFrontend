@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
+import api from '../../services/api'
 
 import Input from '../../Components/Input'
 import Button from '@material-ui/core/Button';
@@ -12,13 +14,13 @@ import {
 } from './api.js'
 
 function NovoUsuario() {
-  const [dataCad, setDataCad] = useState('')
-  const [cargo, setCargo] = useState('')
-  const [cpf, setCpf] = useState('')
-  const [nome, setNome] = useState('')
-  const [ufNasc, setUfNasc] = useState('')
-  const [salario, setSalario] = useState('')
-  const [status, setStatus] = useState({})
+  const [DataCad, setDataCad] = useState('')
+  const [Cargo, setCargo] = useState('')
+  const [Cpf, setCpf] = useState('')
+  const [Nome, setNome] = useState('')
+  const [UfNasc, setUfNasc] = useState('')
+  const [Salario, setSalario] = useState('')
+  const [Status, setStatus] = useState('')
 
   function atualizaCargo(e) {
     setCargo(e)
@@ -41,25 +43,39 @@ function NovoUsuario() {
   }
 
   function atualizaStatus(e) {
-    setStatus(e.value)
+    setStatus(e.value.name)
   }
 
-  function aplicaFiltros(e) {
+  useEffect(() => {
     let newDate = new Date()
     let date = newDate.getDate();
     let month = newDate.getMonth() + 1;
     let year = newDate.getFullYear();
 
     setDataCad(date + "/" + month + "/" + year)
+  });
 
+  async function cadastrarUsuario(e) {
     console.log("Cadastrando usuario")
-    console.log(dataCad)
-    console.log(cargo)
-    console.log(cpf)
-    console.log(nome)
-    console.log(ufNasc)
-    console.log(salario)
-    console.log(status.name)
+    console.log(DataCad)
+    console.log(Cargo)
+    console.log(Cpf)
+    console.log(Nome)
+    console.log(UfNasc)
+    console.log(Salario)
+    console.log(Status)
+
+    const response = await api.post('/user', {
+      DataCad,
+      Cargo,
+      Cpf,
+      Nome,
+      UfNasc,
+      Salario,
+      Status
+    })
+
+    console.log(response.data)
   }
 
   return (
@@ -73,7 +89,7 @@ function NovoUsuario() {
         <Input titulo="UfNasc" minhaFunc={atualizaUfNasc} />
         <Input titulo="Salario" minhaFunc={atualizaSalario} />
         <Select titulo="Status" lista={statusUsu} minhaFunc={atualizaStatus} />
-        <Button variant="contained" color="primary" onClick={aplicaFiltros} >
+        <Button variant="contained" color="primary" onClick={cadastrarUsuario} >
           Cadastrar
         </Button>
       </div>
