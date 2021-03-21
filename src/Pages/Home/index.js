@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import api from '../../services/api'
 
 import Header from '../../Components/Header'
 import Select from '../../Components/Select'
@@ -9,7 +10,7 @@ import Button from '@material-ui/core/Button';
 import {
   filtros, 
   colunasTabela,
-  linhasTabela
+  // linhasTabela
 } from './api'
 
 import './styles.scss'
@@ -17,6 +18,16 @@ import './styles.scss'
 function Home() {
   const [filtrarPor, setFiltrarPor] = useState({})
   const [termoFiltro, setTermoFiltro] = useState('')
+  const [usuarios, setUsuarios] = useState([])
+
+  useEffect(() => {
+    async function carregaUsuarios() {
+      const response = await api.get('/users')
+  
+      setUsuarios(response.data)
+    }
+    carregaUsuarios()
+  }, [])
 
   function atualizaFiltro(e) {
     setFiltrarPor(e.value)
@@ -44,7 +55,7 @@ function Home() {
           </Button>
         </div>
         <div className="containerTable">
-          <Table columns={colunasTabela} rows={linhasTabela} />
+          <Table columns={colunasTabela} rows={usuarios} />
         </div>
       </div>
     </>

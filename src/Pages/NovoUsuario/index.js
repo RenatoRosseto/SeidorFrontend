@@ -53,7 +53,7 @@ function NovoUsuario() {
     let year = newDate.getFullYear();
 
     setDataCad(date + "/" + month + "/" + year)
-  });
+  }, []);
 
   async function cadastrarUsuario(e) {
     console.log("Cadastrando usuario")
