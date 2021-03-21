@@ -1,8 +1,12 @@
 import React from 'react';
 
+import Header from '../../Components/Header'
+
 function NovoUsuario() {
   return (
-    <h1>Novo Usuario</h1>
+    <>
+      <Header titulo="Cadastro de novo usuário" btnTipo="novoUsuario" />
+    </>
   );
 }
 
