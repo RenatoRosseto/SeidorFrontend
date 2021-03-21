@@ -12,20 +12,54 @@ import {
 } from './api.js'
 
 function NovoUsuario() {
-  const [filtrarPor, setFiltrarPor] = useState({})
-  const [termoFiltro, setTermoFiltro] = useState('')
+  const [dataCad, setDataCad] = useState('')
+  const [cargo, setCargo] = useState('')
+  const [cpf, setCpf] = useState('')
+  const [nome, setNome] = useState('')
+  const [ufNasc, setUfNasc] = useState('')
+  const [salario, setSalario] = useState('')
+  const [status, setStatus] = useState({})
+
+  function atualizaCargo(e) {
+    setCargo(e)
+  }
+
+  function atualizaCPF(e) {
+    setCpf(e)
+  }
+
+  function atualizaNome(e) {
+    setNome(e)
+  }
+
+  function atualizaUfNasc(e) {
+    setUfNasc(e)
+  }
   
-  function atualizaTermoFiltro(e) {
-    setTermoFiltro(e)
+  function atualizaSalario(e) {
+    setSalario(e)
+  }
+
+  function atualizaStatus(e) {
+    setStatus(e.value)
   }
 
   function aplicaFiltros(e) {
-    console.log("Aplicando filtros")
-    console.log("Filtrando por: ")
-  }
+    let newDate = new Date()
+    let date = newDate.getDate();
+    let month = newDate.getMonth() + 1;
+    let year = newDate.getFullYear();
 
-  function atualizaFiltro(e) {
-    setFiltrarPor(e.value)
+    setDataCad(date + "/" + month + "/" + year)
+
+    console.log("Cadastrando usuario")
+    console.log(dataCad)
+    console.log(cargo)
+    console.log(cpf)
+    console.log(nome)
+    console.log(ufNasc)
+    console.log(salario)
+    console.log(status.name)
   }
 
   return (
@@ -33,13 +67,13 @@ function NovoUsuario() {
       <Header titulo="Cadastro de novo usuário" btnTipo="novoUsuario" />
       <div className="containerNovoUsuario">
         <h2>Entre com os dados do novo usuário</h2>
-        <Input titulo="Cargo" minhaFunc={atualizaTermoFiltro} />
-        <Input titulo="Cpf" minhaFunc={atualizaTermoFiltro} />
-        <Input titulo="Nome" minhaFunc={atualizaTermoFiltro} />
-        <Input titulo="UfNasc" minhaFunc={atualizaTermoFiltro} />
-        <Input titulo="Salario" minhaFunc={atualizaTermoFiltro} />
-        <Select titulo="Status" lista={statusUsu} minhaFunc={atualizaFiltro} />
-        <Button variant="contained" color="primary" onClick={aplicaFiltros}>
+        <Input titulo="Cargo" minhaFunc={atualizaCargo} />
+        <Input titulo="Cpf" minhaFunc={atualizaCPF} />
+        <Input titulo="Nome" minhaFunc={atualizaNome} />
+        <Input titulo="UfNasc" minhaFunc={atualizaUfNasc} />
+        <Input titulo="Salario" minhaFunc={atualizaSalario} />
+        <Select titulo="Status" lista={statusUsu} minhaFunc={atualizaStatus} />
+        <Button variant="contained" color="primary" onClick={aplicaFiltros} >
           Cadastrar
         </Button>
       </div>
