@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 
 import Header from '../../Components/Header'
-import {filtros} from './api'
 import Select from '../../Components/Select'
 import Input from '../../Components/Input'
+import Table from '../../Components/Table'
 import Button from '@material-ui/core/Button';
+
+import {
+  filtros, 
+  colunasTabela
+} from './api'
 
 import './styles.scss'
 
@@ -36,6 +41,9 @@ function Home() {
           <Button variant="contained" color="primary" onClick={aplicaFiltros}>
             Aplicar
           </Button>
+        </div>
+        <div className="containerTable">
+          <Table columns={colunasTabela} />
         </div>
       </div>
     </>
