@@ -10,10 +10,19 @@ import './styles.scss'
 
 function Home() {
   const [filtrarPor, setFiltrarPor] = useState({})
+  const [termoFiltro, setTermoFiltro] = useState('')
 
   function atualizaFiltro(e) {
-    console.log(e.value)
     setFiltrarPor(e.value)
+  }
+
+  function atualizaTermoFiltro(e) {
+    setTermoFiltro(e)
+  }
+
+  function aplicaFiltros(e) {
+    console.log("Aplicando filtros")
+    console.log("Filtrando por: " + filtrarPor.value + "//" + filtrarPor.name + "//" + termoFiltro)
   }
 
   return (
@@ -22,9 +31,9 @@ function Home() {
       <div className="containerHome">
         <div className="containerFiltros">
           <h2>Filtros:</h2>
-          <Select titulo="Filtrar por" lista={filtros} minhaFunc={atualizaFiltro}  />
-          <Input titulo={filtrarPor.name} />
-          <Button variant="contained" color="primary">
+          <Select titulo="Filtrar por" lista={filtros} minhaFunc={atualizaFiltro} />
+          <Input titulo={filtrarPor.name} minhaFunc={atualizaTermoFiltro} />
+          <Button variant="contained" color="primary" onClick={aplicaFiltros}>
             Aplicar
           </Button>
         </div>
