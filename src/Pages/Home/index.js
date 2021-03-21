@@ -40,6 +40,18 @@ function Home() {
   function aplicaFiltros(e) {
     console.log("Aplicando filtros")
     console.log("Filtrando por: " + filtrarPor.value + "//" + filtrarPor.name + "//" + termoFiltro)
+
+    // const response = api.get('/search', {
+    //   DataCad,
+    //   Cargo,
+    //   Cpf,
+    //   Nome,
+    //   UfNasc,
+    //   Salario,
+    //   Status
+    // })
+  
+    // setUsuarios(response.data)
   }
 
   return (
