@@ -1,0 +1,14 @@
+.containerHome {
+  width: 100%;
+  height: calc(100vh - 56.5px);
+  margin-top: 56.5px;
+}
+
+.containerFiltros {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: lightgray;
+}
