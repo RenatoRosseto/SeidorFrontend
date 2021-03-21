@@ -24,12 +24,17 @@ const useStyles = makeStyles({
   },
 });
 
+function populaLinhasTabela(lista) {
+  let listaFinal = []
+  lista.map((item) => {
+    listaFinal.push(createData(item.DataCad, item.Cargo, item.Cpf, item.Nome, item.UfNasc, item.Salario, item.Status, <DelButton />))
+  })
+  return listaFinal
+}
+
 export default function StickyHeadTable(props) {
   const columns = props.columns;
-  const rows = [
-    createData('15/04/2017', 'Dev Jr', '85235708709', 'Aaron Aaberg', 'AP', '8965.30', 'ATIVO', <DelButton />),
-    createData('15/04/2017', 'Dev Jr', '85235708709', 'Aaron Aaberg', 'AP', '8965.30', 'ATIVO', <DelButton />),
-  ];
+  const rows = populaLinhasTabela(props.rows)
 
   const classes = useStyles();
   const [page, setPage] = React.useState(0);

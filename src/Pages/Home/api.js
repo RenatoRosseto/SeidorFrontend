@@ -42,3 +42,24 @@ export const colunasTabela = [
     label: 'Opções', 
   }
 ]
+
+export const linhasTabela = [
+  {
+    DataCad: '15/04/2017',
+    Cargo: 'Dev Jr',
+    Cpf: '85235708709',
+    Nome: 'Aaron Aaberg',
+    UfNasc: 'AP',
+    Salario: '8965.30',
+    Status:'ATIVO'
+  },
+  {
+    DataCad: '19/04/2017',
+    Cargo: 'AC Sr',
+    Cpf: '59984408701',
+    Nome: 'Aaron Aaby',
+    UfNasc: 'RO',
+    Salario: '5312.70',
+    Status:'ATIVO'
+  }
+]

@@ -8,7 +8,8 @@ import Button from '@material-ui/core/Button';
 
 import {
   filtros, 
-  colunasTabela
+  colunasTabela,
+  linhasTabela
 } from './api'
 
 import './styles.scss'
@@ -43,7 +44,7 @@ function Home() {
           </Button>
         </div>
         <div className="containerTable">
-          <Table columns={colunasTabela} />
+          <Table columns={colunasTabela} rows={linhasTabela} />
         </div>
       </div>
     </>
