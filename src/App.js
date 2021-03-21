@@ -1,10 +1,13 @@
 import React from 'react';
 
+import Button from '@material-ui/core/Button';
 import './global.scss'
 
 function App() {
   return (
-    <h1>Hello World</h1>
+    <Button variant="contained" color="primary">
+      Hello World
+    </Button>
   );
 }
 
